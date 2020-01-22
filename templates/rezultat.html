@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+ <meta charset="UTF-8">
+    <head>
+        <title> ПОИСК ПО ХХ - РЕЗУЛЬТАТ </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/zapros/"> ХХ  ПОИСК</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                    <a class="nav-link" href="/">  ГЛАВНАЯ СТРАНИЦА ПАРСЕРА <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/zapros/"> ФОРМА ПОИСКА </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/address/"> КОНТАКТЫ </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <hr><br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>ВОТ ЧТО НАШЛОСЬ ПО ВАШЕМУ ЗАПРОСУ " {{vacancy}} " </h1><br>
+                <h2>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2><br>
+
+                <table class="table table-striped">
+                    <tr>
+                        <td> ПО ВАШЕМУ ЗАПРОСУ СО ЗНАНИЕМ ЗНАНИЕ ЯЗЫКА ПРОГРАММИРОВАНИЯ </td>
+                        <td> {{vacancy}} </td>
+                    </tr
+                    <tr>
+                        <td>В РЕГИОНЕ: </td>
+                        <td> {{area}} </td>
+                    </tr>                    <tr>
+                     <tr>
+                        <td> НАЙДЕНО ВАКАНСИЙ </td>
+                        <td> {{salary}} </td>
+                    </tr>
+                    <th>ТРЕБУЮТСЯ ДОПОЛНИТЕЛЬНЫЕ ЗНАНИЯ В ОБЛАСТИ:</th>
+                        <th>  <ul> {% for item in data %}
+                            <li> {{item}} </li>
+                               {% endfor %}
+                    </th>
+                   
+                </table>
+            </div>
+        </div>
+        <br>
+
+    </div>
+</body>
+</html>
