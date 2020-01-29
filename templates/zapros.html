@@ -15,17 +15,19 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
+                <li class="nav-item active">
                     <a class="nav-link" href="/">  ГЛАВНАЯ СТРАНИЦА ПАРСЕРА <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/zapros/"> ФОРМА ПОИСКА </a>
+                    <a class="nav-link" href="/zapros/"> ФОРМА ПОИСКА по ХХ </a>
                 </li>
-                
+                 <li class="nav-item">
+                    <a class="nav-link" href="/base/"> ФОРМА ПОИСКА по SQLite</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/address/"> КОНТАКТЫ </a>
                 </li>
-
             </ul>
         </div>
     </nav>
@@ -33,25 +35,30 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1> ВЫБЕРИТЕ ПАРАМЕТРЫ ПОИСКА </h1><br>
+                <h1> ВЫБЕРИТЕ ПАРАМЕТРЫ ПОИСКА по ХХ </h1><br>
             </div>
         </div>
         <br>
         <form method="post">
             <div class="form-group">
-                <label for="vacancy">ЯЗЫК ПРОГРАММИРОВАНИЯ</label>
-                <input type="input" name="vacancy" class="form-control" id="vacancy" placeholder="ВВЕДИТЕ ПРЕДПОЧИТАЕМЫЙ ЯЗЫК ПРОГРАММИРОВАНИЯ">
-                <small id="vacancyHelp" class="form-text text-muted"> ОСНОВНОЙ ЯЗЫК ПРОГРАММИРОВАНИЯ: PYTHON</small>
+                <label for="vacancy">Введите название вакансии (или язык программирования, например: COBOL)</label>
+                <input type="input" name="vacancy" class="form-control" id="vacancy" placeholder="ВВЕДИТЕ ПРЕДПОЧИТАЕМЫЙ ЯЗЫК ПРОГРАММИРОВАНИЯ (название вакансии: COBOL DEVELOPER)">
+                <small id="vacancyHelp" class="form-text text-muted"> НАПРИМЕР: COBOL DEVELOPER </small>
             </div>
             <div class="form-group">
                 <label for="region">ГДЕ ИСКАТЬ</label>
                 <select class="form-control" name="region" id="region" value="">
-                    <option value="1"> Москва </option>
+                    <option value="70"> ЕЙСК </option>
                     <option value="2"> Санкт-Петербург </option>
                     <option value="113"> Вся РФ </option>
+                    <option value="5"> Украина </option>
+                    <option value="40"> КАЗАХСТАН </option>
+                    <option value="1"> МОСКВА </option>
+                    <option value="16"> БЕЛАРУСЬ </option>
+                    <option value="1001"> ДРУГИЕ РЕГИОНЫ </option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary"> ИЩЕМ??? </button>
+            <button type="submit" class="btn btn-primary"> ИЩЕМ???))) </button>
         </form>
     </div>
 
