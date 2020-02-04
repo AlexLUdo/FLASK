@@ -33,15 +33,13 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h1>ВОТ ЧТО НАШЛОСЬ ПО ВАШЕМУ ЗАПРОСУ в регионе  {{area}} </h1><br>
-                <h2>~~регион~~язык программирования~~количество вакансий~~</h2><br>
+                <h1> ПО ВАШЕМУ ЗАПРОСУ {{vacanc}} в регионе  {{area}} найдена следующая информация: </h1><br>
+                <h2>~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</h2><br>
 
                 <table class="table table-striped">
                 
-                        <th>  <ul> {% for item in items %} </ul>
-                                 <ul> {% for it in item %} </ul>
-                            <li> {{it}} </li>
-                                      {% endfor %}
+                        <th>  <ul> {% for item in vacancies %} </ul>
+                            <li> РЕГИОНЕ: {{item.reg}} ПО ЗАПРОСУ:  {{item.vac}} НАЙДЕНО: {{item.num}} ВАКАНСИЙ </li>
                                   {% endfor %}
                         </th>
                 </table>

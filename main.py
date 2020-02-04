@@ -1,10 +1,11 @@
 from flask import Flask, render_template, request, abort, redirect, url_for, send_file, jsonify
-import requests, re, json, pprint, sqlite3
-from dbcon import put, get
+import requests, re, sqlite3
+from alch import put, get
 
 domain = 'https://api.hh.ru/'
 url = f'{domain}vacancies'
 params = {}
+vacancies = {}
 
 app = Flask(__name__)
 
@@ -14,7 +15,6 @@ def index():
 
 @app.route("/address/")
 def contacts():
-    get()
     developer_name = 'Alex Udo'
     developer_phone_number = '+0(000)000-00-01'
     developer_mail = 'alex@00000.01'
@@ -26,18 +26,18 @@ def query():
 
 @app.route("/zapros/", methods=['POST'])
 def show_res():
-    vacancy = request.form['vacancy']
+    vacanc = request.form['vacancy']
     region = request.form['region']
-    if region == '1':   area = "Москва"
-    if region == '2':   area = "Санкт-Петербург"
+    if region == '1': area = "Москва"
+    if region == '2': area = "Санкт-Петербург"
     if region == '113': area = "Россия"
-    if region == '1001':area = "ДРУГИЕ РЕГИОНЫ"
-    if region == '5':   area = "УКРАИНА"
+    if region == '1001': area = "ДРУГИЕ РЕГИОНЫ"
+    if region == '5':  area = "УКРАИНА"
     if region == '16':  area = "БЕЛОРУССИЯ"
     if region == '40':  area = "Казахстан"
     if region == '70':  area = "ЕЙСК"
     params = {}
-    params['text'] = vacancy
+    params['text'] = vacanc
     area_query = int(region)
     params['area'] = str(area_query)
     result=requests.get(url, params = params).json()
@@ -57,8 +57,9 @@ def show_res():
                 else:
                     vse_skily.setdefault(i['name'], 1)
 
-            put(vacancy, area, vse_skily, all_found_vac)
-            return render_template('rezultat.html', salary=all_found_vac, vacancy=vacancy, data=vse_skily, area=area)
+            if all_found_vac == False: all_found_vac = 0
+            put(vacanc,area,all_found_vac,vse_skily)
+            return render_template('rezultat.html', salary=all_found_vac, vacanc=vacanc, data=vse_skily, area=area)
 
 @app.route("/base/", methods=['GET'])
 def queryb():
@@ -66,7 +67,7 @@ def queryb():
 
 @app.route("/base/", methods=['POST'])
 def show_resb():
-    #vacancy = request.form['vacancy']
+    vacanc = request.form['vacanc']
     region = request.form['region']
     if region == '1':   area = "Москва"
     if region == '2':   area = "Санкт-Петербург"
@@ -76,12 +77,9 @@ def show_resb():
     if region == '16':  area = "БЕЛОРУССИЯ"
     if region == '40':  area = "Казахстан"
     if region == '70':  area = "ЕЙСК"
-    conn = sqlite3.connect('xx.sqlite', check_same_thread=False)
-    cur = conn.cursor()
-    cur.execute('SELECT reg, vac, num from zapros where reg=?', (area,))
-    res = cur.fetchall()
-    return render_template('rezultatb.html', items=res, area=area)
 
+    vacancies = get(area, vacanc)
+    return render_template('rezultatb.html', vacancies=vacancies, area=area, vacanc=vacanc)
 
 if __name__ == "__main__":
     app.run(debug=True)
