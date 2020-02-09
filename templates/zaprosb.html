@@ -2,7 +2,7 @@
 <html>
  <meta charset="UTF-8">
     <head>
-        <title> ПОИСК ПО ХХ - ПАРАМЕТРЫ ПОИСКА </title>
+        <title> ПОИСК ПО SQLite </title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href = "/static/css/style.css" rel="stylesheet" type="text/css"/>
     </head>
@@ -39,12 +39,16 @@
         </div>
         <br>
         <form method="post">
-        
+            <div class="form-group">
+                <label for="vacanc">Введите название вакансии (или язык программирования, например: PYTHON)</label>
+                <input type="input" name="vacanc" class="form-control" id="vacanc" placeholder="ВВЕДИТЕ ПРЕДПОЧИТАЕМЫЙ ЯЗЫК ПРОГРАММИРОВАНИЯ (название вакансии: PYTHON DEVELOPER)">
+                <small id="vacancyHelp" class="form-text text-muted"> НАПРИМЕР: PYTHON DEVELOPER </small>
+            </div>
             <div class="form-group">
                 <label for="region"> ВЫБИРИТЕ РЕГИОН В КОТОРОМ ОСУЩЕСТВИТЬ ПОИСК (ИЗ ТОГО ЧТО ЕСТЬ В БАЗЕ) </label>
                 <select class="form-control" name="region" id="region" value="">
-                    <option value="70"> ЕЙСК </option>
                     <option value="2"> Санкт-Петербург </option>
+                    <option value="70"> ЕЙСК </option>
                     <option value="113"> Вся РФ </option>
                     <option value="5"> Украина </option>
                     <option value="40"> КАЗАХСТАН </option>
